@@ -147,7 +147,7 @@ a {
   justify-content: center;
   flex-wrap: wrap;
   gap: 14px;
-  margin-top: 24px;
+  margin-top: 34px;
 }
 
 .hero-button,
@@ -279,7 +279,7 @@ a {
 
 .project-card .card-button {
   width: min(100%, 220px);
-  margin-top: auto;
+  margin-top: 28px;
   align-self: center;
 }
 
