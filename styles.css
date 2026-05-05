@@ -1,17 +1,19 @@
 :root {
-  --bg: #f6f2e8;
-  --surface: rgba(255, 255, 255, 0.68);
-  --surface-strong: #fffaf2;
-  --text: #13263a;
-  --muted: #526174;
-  --line: rgba(19, 38, 58, 0.12);
-  --accent: #e77a39;
-  --accent-soft: rgba(231, 122, 57, 0.14);
-  --accent-deep: #bd5622;
-  --secondary: #1f5968;
-  --secondary-soft: rgba(31, 89, 104, 0.12);
-  --shadow: 0 18px 60px rgba(32, 42, 54, 0.08);
-  --radius-xl: 32px;
+  --bg: #06080d;
+  --bg-soft: #0b1017;
+  --surface: rgba(12, 18, 28, 0.82);
+  --surface-strong: rgba(18, 25, 38, 0.96);
+  --surface-alt: rgba(10, 16, 24, 0.72);
+  --text: #f3f7fd;
+  --muted: #9da9bb;
+  --line: rgba(126, 161, 214, 0.14);
+  --line-strong: rgba(126, 161, 214, 0.28);
+  --accent: #1b3f74;
+  --accent-bright: #3564a7;
+  --accent-soft: rgba(53, 100, 167, 0.14);
+  --glow: rgba(32, 86, 173, 0.28);
+  --shadow: 0 30px 80px rgba(0, 0, 0, 0.42);
+  --radius-xl: 30px;
   --radius-lg: 22px;
   --radius-md: 16px;
   --max-width: 1180px;
@@ -28,12 +30,12 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: "Instrument Sans", sans-serif;
+  font-family: "DM Sans", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at top left, rgba(231, 122, 57, 0.16), transparent 28%),
-    radial-gradient(circle at 80% 12%, rgba(31, 89, 104, 0.12), transparent 26%),
-    linear-gradient(180deg, #f6f2e8 0%, #f3efe6 100%);
+    radial-gradient(circle at top left, rgba(32, 86, 173, 0.18), transparent 26%),
+    radial-gradient(circle at 86% 18%, rgba(21, 46, 88, 0.32), transparent 22%),
+    linear-gradient(180deg, #04070c 0%, #070b12 40%, #04070c 100%);
 }
 
 body::before {
@@ -42,10 +44,20 @@ body::before {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(19, 38, 58, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(19, 38, 58, 0.04) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent 95%);
+    linear-gradient(rgba(126, 161, 214, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(126, 161, 214, 0.06) 1px, transparent 1px);
+  background-size: 84px 84px;
+  opacity: 0.28;
+  mask-image: radial-gradient(circle at center, black 50%, transparent 96%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(4, 7, 12, 0.05) 0%, rgba(4, 7, 12, 0.22) 100%);
 }
 
 a {
@@ -54,6 +66,8 @@ a {
 }
 
 .site-shell {
+  position: relative;
+  z-index: 1;
   width: min(var(--max-width), calc(100% - 32px));
   margin: 0 auto;
   padding: 24px 0 40px;
@@ -64,9 +78,9 @@ a {
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  padding: 18px 22px;
+  padding: 18px 24px;
   margin-bottom: 28px;
-  background: rgba(255, 250, 242, 0.72);
+  background: rgba(8, 12, 18, 0.68);
   backdrop-filter: blur(14px);
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -79,27 +93,43 @@ a {
 .project-badge,
 .panel-label,
 .workflow-index {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Sora", sans-serif;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
 }
 
 .eyebrow {
-  font-size: 0.8rem;
-  color: var(--secondary);
+  font-size: 0.78rem;
+  color: #8fb2ea;
 }
 
 .topnav {
   display: flex;
   gap: 18px;
-  font-size: 0.96rem;
+  font-size: 0.95rem;
   color: var(--muted);
 }
 
+.topnav a,
+.footer a,
+.project-meta a,
+.button,
+.panel-grid article,
+.skill-block,
+.workflow-card,
+.project-card,
+.project-meta p {
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease;
+}
+
 .topnav a:hover,
-.footer a:hover,
-.project-meta a:hover {
-  color: var(--accent-deep);
+.footer a:hover {
+  color: #dce9ff;
 }
 
 .hero {
@@ -117,7 +147,7 @@ a {
 .workflow-card,
 .intro,
 .footer {
-  background: var(--surface);
+  background: linear-gradient(180deg, rgba(14, 20, 31, 0.92), rgba(8, 12, 19, 0.88));
   backdrop-filter: blur(10px);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
@@ -130,30 +160,43 @@ a {
   overflow: hidden;
 }
 
+.hero-copy::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(30, 60, 110, 0.2), transparent 35%),
+    radial-gradient(circle at 85% 20%, rgba(72, 115, 186, 0.16), transparent 24%);
+  pointer-events: none;
+}
+
 .hero-copy::after {
   content: "";
   position: absolute;
-  width: 220px;
-  height: 220px;
-  right: -70px;
-  bottom: -70px;
+  width: 320px;
+  height: 320px;
+  right: -110px;
+  bottom: -110px;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(231, 122, 57, 0.18), rgba(31, 89, 104, 0.08));
+  border: 1px solid rgba(143, 178, 234, 0.1);
+  background: radial-gradient(circle at center, rgba(53, 100, 167, 0.18), transparent 62%);
+  filter: blur(8px);
 }
 
 .kicker {
-  font-size: 0.82rem;
-  color: var(--secondary);
+  font-size: 0.8rem;
+  color: #8fb2ea;
   margin: 0 0 18px;
 }
 
 .hero h1 {
+  position: relative;
   margin: 0;
   max-width: 12ch;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: clamp(3.2rem, 7vw, 6rem);
   line-height: 0.96;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.06em;
 }
 
 .hero-text,
@@ -161,18 +204,21 @@ a {
 .project-summary,
 .project-points li,
 .skill-block p,
-.workflow-card p {
+.workflow-card p,
+.panel-grid p {
   color: var(--muted);
   line-height: 1.7;
 }
 
 .hero-text {
+  position: relative;
   max-width: 62ch;
   margin: 24px 0 0;
   font-size: 1.05rem;
 }
 
 .hero-actions {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
@@ -187,25 +233,34 @@ a {
   padding: 0 22px;
   border-radius: 999px;
   font-weight: 600;
-  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
 }
 
-.button:hover {
-  transform: translateY(-2px);
+.button:hover,
+.project-card:hover,
+.skill-block:hover,
+.workflow-card:hover,
+.panel-grid article:hover {
+  transform: translateY(-3px);
 }
 
 .button-primary {
-  background: var(--text);
+  background: linear-gradient(135deg, #244f8b 0%, #16355d 100%);
   color: #fff;
+  box-shadow: 0 18px 38px rgba(23, 55, 100, 0.38);
 }
 
 .button-primary:hover {
-  background: var(--secondary);
+  background: linear-gradient(135deg, #2a5b9f 0%, #1a3e6e 100%);
 }
 
 .button-secondary {
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid var(--line-strong);
+  background: rgba(12, 18, 28, 0.72);
+  color: #dbe7fb;
+}
+
+.button-secondary:hover {
+  border-color: rgba(143, 178, 234, 0.42);
 }
 
 .hero-panel {
@@ -223,25 +278,25 @@ a {
   place-items: center;
   border-radius: 24px;
   background:
-    linear-gradient(135deg, var(--accent) 0%, #f1a474 100%);
-  color: #fff;
-  font-family: "Space Grotesk", sans-serif;
+    linear-gradient(135deg, rgba(18, 47, 93, 1) 0%, rgba(53, 100, 167, 1) 100%);
+  color: #eef5ff;
+  font-family: "Sora", sans-serif;
   font-size: 2rem;
   font-weight: 700;
-  box-shadow: 0 18px 30px rgba(231, 122, 57, 0.24);
+  box-shadow: 0 22px 36px rgba(16, 41, 82, 0.44);
 }
 
 .panel-card {
   padding: 20px;
   border-radius: var(--radius-lg);
-  background: var(--surface-strong);
+  background: linear-gradient(180deg, rgba(16, 23, 35, 0.95), rgba(11, 17, 26, 0.92));
   border: 1px solid var(--line);
 }
 
 .panel-label {
   margin: 0 0 14px;
   font-size: 0.78rem;
-  color: var(--secondary);
+  color: #8fb2ea;
 }
 
 .panel-list {
@@ -254,7 +309,7 @@ a {
 
 .panel-list li {
   padding-bottom: 10px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid rgba(126, 161, 214, 0.12);
 }
 
 .panel-list li:last-child {
@@ -271,21 +326,26 @@ a {
 .panel-grid article {
   padding: 18px 16px;
   border-radius: 18px;
-  background: var(--surface-strong);
+  background: linear-gradient(180deg, rgba(14, 20, 31, 0.95), rgba(10, 14, 22, 0.9));
   border: 1px solid var(--line);
+}
+
+.panel-grid article:hover {
+  border-color: rgba(143, 178, 234, 0.28);
+  box-shadow: inset 0 0 0 1px rgba(143, 178, 234, 0.05);
 }
 
 .panel-grid span {
   display: block;
   margin-bottom: 8px;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
+  color: #d9e8ff;
 }
 
 .panel-grid p {
   margin: 0;
-  color: var(--muted);
   font-size: 0.92rem;
   line-height: 1.45;
 }
@@ -306,15 +366,15 @@ a {
 .section-label {
   margin: 0 0 8px;
   font-size: 0.78rem;
-  color: var(--secondary);
+  color: #8fb2ea;
 }
 
 .section-heading h2 {
   margin: 0;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: clamp(2rem, 3vw, 3.1rem);
   line-height: 1.02;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.05em;
 }
 
 .intro-grid {
@@ -337,9 +397,16 @@ a {
   gap: 18px;
 }
 
+.project-card:hover,
+.skill-block:hover,
+.workflow-card:hover {
+  border-color: rgba(143, 178, 234, 0.3);
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.48), 0 0 0 1px rgba(17, 42, 83, 0.14);
+}
+
 .project-card-featured {
   background:
-    linear-gradient(135deg, rgba(31, 89, 104, 0.08), rgba(231, 122, 57, 0.05)),
+    linear-gradient(180deg, rgba(15, 24, 36, 0.96), rgba(8, 13, 21, 0.92)),
     var(--surface);
 }
 
@@ -354,23 +421,24 @@ a {
   padding: 0 14px;
   border-radius: 999px;
   font-size: 0.74rem;
-  color: var(--secondary);
-  background: var(--secondary-soft);
+  color: #bfd5fb;
+  background: rgba(35, 80, 148, 0.18);
+  border: 1px solid rgba(107, 145, 206, 0.16);
 }
 
 .project-badge-soft {
-  background: var(--accent-soft);
-  color: var(--accent-deep);
+  background: rgba(17, 34, 66, 0.82);
+  color: #94b7f0;
 }
 
 .project-card h3,
 .skill-block h3,
 .workflow-card h3 {
   margin: 12px 0 0;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: 1.8rem;
   line-height: 1.05;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
 }
 
 .project-summary {
@@ -401,18 +469,20 @@ a {
   padding: 8px 12px;
   border-radius: 999px;
   font-size: 0.9rem;
-  background: rgba(255, 255, 255, 0.78);
-  border: 1px solid var(--line);
+  background: rgba(14, 20, 31, 0.85);
+  border: 1px solid rgba(126, 161, 214, 0.14);
+  color: #dce8fb;
 }
 
 .project-meta a {
-  background: var(--text);
-  color: #fff;
+  background: linear-gradient(135deg, #183660 0%, #214d87 100%);
+  border-color: transparent;
+  color: #f7fbff;
 }
 
 .project-meta a:hover {
   color: #fff;
-  background: var(--secondary);
+  background: linear-gradient(135deg, #204679 0%, #2d5ca0 100%);
 }
 
 .skills-grid {
@@ -448,7 +518,7 @@ a {
 .workflow-index {
   display: inline-block;
   font-size: 0.8rem;
-  color: var(--accent-deep);
+  color: #8fb2ea;
 }
 
 .footer {
@@ -464,6 +534,7 @@ a {
 .footer p,
 .footer a {
   margin: 0;
+  color: var(--muted);
 }
 
 .reveal {
