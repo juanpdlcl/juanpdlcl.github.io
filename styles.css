@@ -144,6 +144,8 @@ a {
 .hero-panel,
 .project-card,
 .skill-block,
+.summary-card,
+.contact-card,
 .workflow-card,
 .intro,
 .footer {
@@ -359,6 +361,25 @@ a {
   border-radius: var(--radius-xl);
 }
 
+.summary-grid,
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.summary-card,
+.contact-card {
+  padding: 28px;
+  border-radius: var(--radius-xl);
+}
+
+.summary-meta {
+  margin: 0 0 18px;
+  color: #dbe7fb;
+  font-weight: 500;
+}
+
 .section-heading {
   margin-bottom: 20px;
 }
@@ -510,6 +531,23 @@ a {
   gap: 18px;
 }
 
+.contact-card h3 {
+  margin: 0 0 10px;
+  font-family: "Sora", sans-serif;
+  font-size: 1.05rem;
+}
+
+.contact-card p,
+.contact-card a {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.contact-card a:hover {
+  color: #dce9ff;
+}
+
 .workflow-card {
   padding: 24px;
   border-radius: var(--radius-lg);
@@ -552,6 +590,8 @@ a {
   .hero,
   .project-stack,
   .skills-grid,
+  .summary-grid,
+  .contact-grid,
   .workflow-layout,
   .intro-grid {
     grid-template-columns: 1fr;
