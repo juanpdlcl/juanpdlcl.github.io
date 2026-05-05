@@ -230,6 +230,43 @@ a {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.experience-table {
+  padding: 22px;
+}
+
+.experience-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  border: 1px solid var(--line);
+  border-bottom: 0;
+}
+
+.experience-row:last-of-type {
+  border-bottom: 1px solid var(--line);
+}
+
+.experience-row-head .experience-main,
+.experience-row-head .experience-side {
+  font-weight: 700;
+}
+
+.experience-main,
+.experience-side {
+  padding: 12px 14px;
+  color: #d9e3f1;
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+
+.experience-side {
+  border-left: 1px solid var(--line);
+  text-align: right;
+}
+
+.experience-details {
+  padding: 18px 8px 0;
+}
+
 .info-card {
   display: flex;
   flex-direction: column;
@@ -302,6 +339,16 @@ a {
   .card-grid,
   .card-grid-3 {
     grid-template-columns: 1fr;
+  }
+
+  .experience-row {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-side {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    text-align: left;
   }
 }
 
